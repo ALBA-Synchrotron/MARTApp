@@ -30,9 +30,9 @@ Finally, start the container:
 
 ```bash
 docker run -e DISPLAY=$DISPLAY \
-			-v "/tmp/.X11-unix/:/tmp/.X11-unix/" \
-			-v "SOURCE:DESTINATION" \
-            ghcr.io/alba-synchrotron/martapp:latest
+           -v "/tmp/.X11-unix/:/tmp/.X11-unix/" \
+           -v "SOURCE:DESTINATION" \
+           ghcr.io/alba-synchrotron/martapp:latest
 ```
 - `-e DISPLAY=$DISPLAY` allows us to access the display for the GUI.
 - `-v "/tmp/.X11-unix/:/tmp/.X11-unix/"` allows us to forward X11.
@@ -62,9 +62,9 @@ Adaptador de Ethernet Ethernet:
 Finally, we can launch the application:
 ```bash
 docker run -e DISPLAY=COMPUTER_IP \
-			-v "/tmp/.X11-unix/:/tmp/.X11-unix/" \
-			-v "SOURCE:DESTINATION" \
-            ghcr.io/alba-synchrotron/martapp:latest
+           -v "/tmp/.X11-unix/:/tmp/.X11-unix/" \
+           -v "SOURCE:DESTINATION" \
+           ghcr.io/alba-synchrotron/martapp:latest
 ```
 
 - `-e DISPLAY=COMPUTER_IP` allows us to access the display for the GUI. `COMPUTER_IP` must be our IP retrieved using ipconfig. For some cases instead of using the IP we can set `DISPLAY=host.docker.internal:0.0`.
@@ -95,9 +95,9 @@ xhost + 127.0.0.1
 Finally, we can launch the application:
 ```
 docker run -e DISPLAY=host.docker.internal:0 \
-			-v "/tmp/.X11-unix:/tmp/.X11-unix" \
-			-v "SOURCE:DESTINATION" \
-			ghcr.io/alba-synchrotron/martapp:latest
+           -v "/tmp/.X11-unix:/tmp/.X11-unix" \
+           -v "SOURCE:DESTINATION" \
+           ghcr.io/alba-synchrotron/martapp:latest
 ```
 - `-e DISPLAY=host.docker.internal:0` allows us to access the display for the GUI.
 - `-v "/tmp/.X11-unix:/tmp/.X11-unix"` allows us to forward X11.
@@ -115,8 +115,8 @@ We only need to launch the application:
 
 ```bash
 docker run -p 5900:5900 -p 6080:6080 \
-			-v "SOURCE:DESTINATION" \
-            ghcr.io/alba-synchrotron/martapp:latest_novnc
+           -v "SOURCE:DESTINATION" \
+           ghcr.io/alba-synchrotron/martapp:latest_novnc
 
 # The application will be automatically open in your browser. If not, enter in http://localhost:6080/ .
 ```
