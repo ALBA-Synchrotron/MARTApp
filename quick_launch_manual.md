@@ -93,7 +93,7 @@ xhost + 127.0.0.1
 ```
 
 Finally, we can launch the application:
-```
+```bash
 docker run -e DISPLAY=host.docker.internal:0 \
            -v "/tmp/.X11-unix:/tmp/.X11-unix" \
            -v "SOURCE:DESTINATION" \
