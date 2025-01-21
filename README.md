@@ -24,3 +24,19 @@ Please, if you use this application for the analysis/reconstruction of your data
 Available soon.
 ```
 
+and the paper of the used algorithm for the reconstruction:
+
+```
+Herguedas-Alonso, A. E., Aballe, L., Fullerton, J., Vélez, M.,
+Martín, J. I., Sorrentino, A., ... & Hierro-Rodriguez, A. (2023).
+A fast magnetic vector characterization method for quasi two-dimensional systems and heterostructures.
+Scientific Reports, 13(1), 9639.
+```
+
+```
+Hierro-Rodriguez, A., Gürsoy, D., Phatak, C., Quirós, C.,
+Sorrentino, A., Álvarez-Prado, L. M., ... & Ferrer, S. (2018).
+3D reconstruction of magnetization from dichroic soft X-ray transmission tomography.
+Journal of synchrotron radiation, 25(4), 1144-1152.
+```
+
