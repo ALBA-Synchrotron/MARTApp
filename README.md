@@ -4,7 +4,7 @@
 
 In this repo you may find:
 
-- **Quick Application Manual** to use MARTApp in/outside ALBA
+- [**User guide** to use MARTApp in/outside ALBA](./user_guide.pdf)
 - **Technical Manual** for a better understanding of MARTApp (available soon)
 - [**Quick Launch Manual** to launch the app outside ALBA](./quick_launch_manual.md)
 
