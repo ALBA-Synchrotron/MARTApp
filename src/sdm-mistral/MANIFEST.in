@@ -1,0 +1,2 @@
+include README.rst AUTHORS.rst CHANGELOG.rst LICENSE.rst versioneer.py
+recursive-include src *.py

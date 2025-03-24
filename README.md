@@ -5,8 +5,57 @@
 In this repo you may find:
 
 - [**User guide** to use MARTApp in/outside ALBA](./user_guide.pdf)
-- **Technical Manual** for a better understanding of MARTApp (available soon)
 - [**Quick Launch Manual** to launch the app outside ALBA](./quick_launch_manual.md)
+- [**Source code**](./src)
+
+## Input data
+
+To start from the pre-processing stage the data must consists of one Xradia (Zeiss microCT) XRM file per acquisition (polarization-angle-repetition) or one
+HDF5 file (`*.h5` or `*.hdf5`) with the following structure:
+
+```
+/                               Group
+    /data                       Soft Link {data_1}
+    /data_1                     Dataset {512, 512}
+    /metadata                   Group
+        /FF                     Dataset {SCALAR}
+        /angle                  Dataset {SCALAR}
+        /data_type              Dataset {SCALAR}
+        /date_time_acquisition  Dataset {SCALAR}
+        /energy                 Dataset {SCALAR}
+        /exposure_time          Dataset {SCALAR}
+        /image_height           Dataset {SCALAR}
+        /image_width            Dataset {SCALAR}
+        /instrument             Dataset {SCALAR}
+        /machine_current        Dataset {SCALAR}
+        /magnification          Dataset {SCALAR}
+        /output_file            Dataset {SCALAR}
+        /pixel_size             Dataset {SCALAR}
+        /polarisation           Dataset {SCALAR}
+        /sample_name            Dataset {SCALAR}
+        /source                 Dataset {SCALAR}
+        /source_probe           Dataset {SCALAR}
+        /source_type            Dataset {SCALAR}
+        /x_position             Dataset {SCALAR}
+        /y_position             Dataset {SCALAR}
+        /z_position             Dataset {SCALAR}
+```
+
+To start from the XMCD stage the data must consists of two HDF5 files (one per
+polarization) with the structure:
+
+```
+/                           Group
+    /TomoNormalized         Group
+        /Currents           Dataset {N}
+        /ExpTimes           Dataset {N}
+        /TomoNormalized     Dataset {N, H, W}
+        /energy             Dataset {N}
+        /polarisation       Dataset {1}
+        /rotation_angle     Dataset {N}
+        /x_pixel_size       Dataset {1}
+        /y_pixel_size       Dataset {1}
+```
 
 ## Do you have suggestions or have you found a bug?
 If you have a suggestion of a feature that you would like to see included in the
