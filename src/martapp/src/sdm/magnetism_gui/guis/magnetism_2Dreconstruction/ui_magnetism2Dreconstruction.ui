@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>magnetism2Dreconstruction</class>
+ <widget class="QDialog" name="magnetism2Dreconstruction">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>891</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MARTApp</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>ALBA_positiu.png</normaloff>ALBA_positiu.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>MS Shell Dlg 2</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <strikeout>false</strikeout>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>This pipeline computes the reconstruction of the 3D magnetization of 2D magnetic structures.
+Steps: cosine_stretching&gt;&gt; join_tilt_series &gt;&gt; reconstruction</string>
+       </property>
+       <property name="text">
+        <string>Magnetic reconstruction of 2D samples</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Input data</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="toolTip">
+             <string> Output file (HDF5) from the magnetism_xmcd pipeline containing the stack.</string>
+            </property>
+            <property name="text">
+             <string>Tilt Series 1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="toolTip">
+             <string> Output file (HDF5) from the magnetism_xmcd pipeline containing the rotated stack.</string>
+            </property>
+            <property name="text">
+             <string>Tilt Series 2 (rotated)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="TS1_lineEdit"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="path_lineEdit">
+            <property name="toolTip">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="toolTip">
+             <string>Output path to save results of the reconstruction.</string>
+            </property>
+            <property name="text">
+             <string>Path</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="TS2_lineEdit"/>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="selectPath_pushButton">
+            <property name="text">
+             <string>Select</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="selectTS1_pushButton">
+            <property name="text">
+             <string>Select</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="selectTS2_pushButton">
+            <property name="text">
+             <string>Select</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Distance between magnetic layer and fiducials [in pixels]:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDoubleSpinBox" name="distFid_doubleSpinBox">
+         <property name="minimum">
+          <double>-100000000000000004764729344.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>100000000000000005366162204393472.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Rotation axis</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="rotationAxis_comboBox">
+         <property name="currentText">
+          <string>Y</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Y</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>X</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>Cosine Stretching Alignment</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="5" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="selectPointsTS2_checkBox">
+            <property name="toolTip">
+             <string> If set, the initial transformation will be obtained from the selected points. Otherwise, it will be computed only from the angles.</string>
+            </property>
+            <property name="text">
+             <string>Select points for initial transformation</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Tilt Series 2</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="roiTS1_checkBox">
+            <property name="toolTip">
+             <string>If set, the user will be able to select ROI from stack for the registration done during the cosine stretching step.</string>
+            </property>
+            <property name="text">
+             <string>Select ROI </string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Tilt Series 1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="roiTS2_checkBox">
+            <property name="toolTip">
+             <string>If set, the user will be able to select ROI from rotated stack for the registration done during the cosine stretching step.</string>
+            </property>
+            <property name="text">
+             <string>Select ROI </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="selectPointsTS1_checkBox">
+            <property name="toolTip">
+             <string> If set, the initial transformation will be obtained from the selected points. Otherwise, it will be computed only from the angles.</string>
+            </property>
+            <property name="text">
+             <string>Select points for initial transformation</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Join Tilt Series</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="roiJoinTS_checkBox">
+            <property name="toolTip">
+             <string>If set, the user will be able to select a ROI from the cosine stretching stacks for the registration done during the join tilt series step.</string>
+            </property>
+            <property name="text">
+             <string>Select ROI</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QCheckBox" name="selectPointsJoinTS_checkBox">
+              <property name="toolTip">
+               <string> If set, the initial transformation will be obtained from the selected points. Otherwise, it will be 90deg.</string>
+              </property>
+              <property name="text">
+               <string>Select points for initial transformation</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_17">
+              <property name="toolTip">
+               <string>Initial rotation angle for alignment between tilt series.</string>
+              </property>
+              <property name="text">
+               <string>Initial angle</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="iniAngleJoinTS_doubleSpinBox">
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="minimum">
+               <double>-360.000000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>360.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string>Reconstruction</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="toolTip">
+             <string>Dichroic coefficient. It can be obtained from the energy spectra, by computing the asymmetry ratio. If unknown, set to 1</string>
+            </property>
+            <property name="text">
+             <string>Dichroic coefficient</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="attLength_lineEdit">
+            <property name="text">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_11">
+            <property name="toolTip">
+             <string>Value of the thickness of the magnetic material layer for reconstruction in meters. If unknown, set to 1</string>
+            </property>
+            <property name="text">
+             <string>Thickness (m)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="thickness_lineEdit">
+            <property name="text">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="dicCoef_lineEdit">
+            <property name="text">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="toolTip">
+             <string>Value for attenuation length of magnetic material in meters. This value is applied for all the
+                        reconstructed volume. It can be obtained from the CXRO database. If unknown, set to 1</string>
+            </property>
+            <property name="text">
+             <string>Attenuation length (m)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Repeat step</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="repeatStep_comboBox">
+         <item>
+          <property name="text">
+           <string>All</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Align Tilt Series 1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Align Tilt Series 2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Join Tilt Series</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2D Reconstruction</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="start_pushButton">
+       <property name="toolTip">
+        <string>Execute pipeline &quot;magnetism_2Dreconstruction&quot;</string>
+       </property>
+       <property name="text">
+        <string>GO!</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="visualization_pushButton">
+       <property name="toolTip">
+        <string>Open HDF5 for visualization with Napari</string>
+       </property>
+       <property name="text">
+        <string>Visualization</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextBrowser" name="notes"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>Copyright © 2024 ALBA-CELLS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Close</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>path_lineEdit</tabstop>
+  <tabstop>selectPath_pushButton</tabstop>
+  <tabstop>TS1_lineEdit</tabstop>
+  <tabstop>selectTS1_pushButton</tabstop>
+  <tabstop>TS2_lineEdit</tabstop>
+  <tabstop>selectTS2_pushButton</tabstop>
+  <tabstop>roiTS1_checkBox</tabstop>
+  <tabstop>selectPointsTS1_checkBox</tabstop>
+  <tabstop>roiTS2_checkBox</tabstop>
+  <tabstop>selectPointsTS2_checkBox</tabstop>
+  <tabstop>roiJoinTS_checkBox</tabstop>
+  <tabstop>attLength_lineEdit</tabstop>
+  <tabstop>thickness_lineEdit</tabstop>
+  <tabstop>dicCoef_lineEdit</tabstop>
+  <tabstop>start_pushButton</tabstop>
+  <tabstop>visualization_pushButton</tabstop>
+  <tabstop>notes</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>magnetism2Dreconstruction</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>876</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>magnetism2Dreconstruction</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>876</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectPointsJoinTS_checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>label_17</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>262</x>
+     <y>451</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectPointsJoinTS_checkBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>iniAngleJoinTS_doubleSpinBox</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>173</x>
+     <y>448</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>686</x>
+     <y>448</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

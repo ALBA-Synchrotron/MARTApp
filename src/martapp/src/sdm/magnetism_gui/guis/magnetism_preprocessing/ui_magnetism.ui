@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>magnetism</class>
+ <widget class="QDialog" name="magnetism">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>780</width>
+    <height>813</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MARTApp</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../magnetism_xmcd/ALBA_positiu.png</normaloff>../magnetism_xmcd/ALBA_positiu.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Many repetition images at different angles. Normally using 2 different polarizations. 
+xrm2hdf5 &gt;&gt; crop &gt;&gt; normalize &gt;&gt; align2D &gt;&gt; average &gt;&gt; [stack]</string>
+       </property>
+       <property name="text">
+        <string>Preprocessing</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Path</string>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="path_lineEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="selectPath_pushButton">
+            <property name="text">
+             <string>Select path</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="input_groupBox">
+       <property name="title">
+        <string>Input</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0" rowminimumheight="0,0,0,0">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item row="1" column="0">
+           <widget class="QRadioButton" name="selectTxt_radioButton">
+            <property name="toolTip">
+             <string>Filename of the .txt script containing the commands used to perform the image acquisition by the BL09 TXM microscope.</string>
+            </property>
+            <property name="text">
+             <string>File .txt</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="selectTxt_lineEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="selectTxt_pushButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Select</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QRadioButton" name="selectDB_radioButton">
+            <property name="toolTip">
+             <string>Filename of the experiment database.</string>
+            </property>
+            <property name="text">
+             <string>Database .json</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="selectDB_lineEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QPushButton" name="selectDB_pushButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Select</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QRadioButton" name="selectFolder_radioButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Folder</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QRadioButton" name="selectPattern_radioButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Tag pattern for filename interpretation e.g: angle_energy_repetition to parse values from filename.</string>
+            </property>
+            <property name="text">
+             <string>Name pattern</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="selectPattern_lineEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QCheckBox" name="delPrevExec_checkBox">
+          <property name="text">
+           <string>Delete previous execution</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="title">
+        <string>Alignment</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_10">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="subpixelAli_checkBox">
+            <property name="text">
+             <string>Sub-pixel</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="outlierThresh_checkBox">
+            <property name="text">
+             <string>Outlier threshold</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="outlierThresh_doubleSpinBox">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="value">
+             <double>0.700000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Method</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="algorithmAli_comboBox">
+            <item>
+             <property name="text">
+              <string>pyStackReg</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Cross-Correlation Fourier</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Cross-Correlation</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Correlation Coefficient</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Optical Flow</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string>Normalization</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="normFF_checkBox">
+            <property name="toolTip">
+             <string>Normalize using flat-field.</string>
+            </property>
+            <property name="text">
+             <string>Flat-field</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="normBG_checkBox">
+            <property name="toolTip">
+             <string>Normalize using background.</string>
+            </property>
+            <property name="text">
+             <string>Background</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="interpFF_checkBox">
+            <property name="toolTip">
+             <string>Missing flat-field will be interpolated.</string>
+            </property>
+            <property name="text">
+             <string>Interpolate Flat-field</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="title">
+        <string>Output</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="saveAll_checkBox">
+            <property name="toolTip">
+             <string/>
+            </property>
+            <property name="text">
+             <string>Save all in a single file (stack, flat-field, background)</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="cropStack_checkBox">
+            <property name="toolTip">
+             <string>Crop output images.</string>
+            </property>
+            <property name="text">
+             <string>Crop stack</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="deleteProc_checkBox">
+            <property name="text">
+             <string>Delete intermediate processing HDF5 files</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="start_pushButton">
+       <property name="toolTip">
+        <string>Execute pipeline &quot;magnetism&quot;</string>
+       </property>
+       <property name="text">
+        <string>GO!</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="visualization_pushButton">
+       <property name="toolTip">
+        <string>Open HDF5 with Napari</string>
+       </property>
+       <property name="text">
+        <string>Visualization</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTextBrowser" name="notes"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Copyright © 2024 ALBA-CELLS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Close</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>path_lineEdit</tabstop>
+  <tabstop>selectPath_pushButton</tabstop>
+  <tabstop>selectTxt_radioButton</tabstop>
+  <tabstop>selectTxt_lineEdit</tabstop>
+  <tabstop>selectTxt_pushButton</tabstop>
+  <tabstop>selectDB_radioButton</tabstop>
+  <tabstop>selectDB_lineEdit</tabstop>
+  <tabstop>selectDB_pushButton</tabstop>
+  <tabstop>normFF_checkBox</tabstop>
+  <tabstop>interpFF_checkBox</tabstop>
+  <tabstop>normBG_checkBox</tabstop>
+  <tabstop>cropStack_checkBox</tabstop>
+  <tabstop>saveAll_checkBox</tabstop>
+  <tabstop>start_pushButton</tabstop>
+  <tabstop>visualization_pushButton</tabstop>
+  <tabstop>notes</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>magnetism</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>227</x>
+     <y>771</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>magnetism</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>295</x>
+     <y>777</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectTxt_radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>selectTxt_lineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>162</x>
+     <y>151</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectTxt_radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>selectTxt_pushButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>711</x>
+     <y>147</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectDB_radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>selectDB_lineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectDB_radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>selectDB_pushButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>742</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectPattern_radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>selectPattern_lineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>119</x>
+     <y>206</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>284</x>
+     <y>225</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>outlierThresh_checkBox</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>outlierThresh_doubleSpinBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>104</x>
+     <y>321</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>408</x>
+     <y>322</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

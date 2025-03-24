@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>magnetism_signal3Dreconstruction</class>
+ <widget class="QDialog" name="magnetism_signal3Dreconstruction">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>746</width>
+    <height>850</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MARTApp</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>ALBA_positiu.png</normaloff>ALBA_positiu.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string>Compute the reconstruction of the absorption 3D aligned for 3D magnetic structures and obtain a 3D mask with segmentation.</string>
+       </property>
+       <property name="text">
+        <string>Magnetic reconstruction of 3D samples</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMaximumSize</enum>
+       </property>
+       <property name="spacing">
+        <number>8</number>
+       </property>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>HDF5 mask</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Tomo Rot</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Tomo</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_30">
+         <property name="text">
+          <string>Dataset Mask
+(reconstruction)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="toolTip">
+          <string>Dataset of the absorption images 3D aligned</string>
+         </property>
+         <property name="text">
+          <string>Dataset
+XMCD
+3DAligned</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="dsetAbsorptionTomoRot_comboBox"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="toolTip">
+          <string>Beggining of the output filename with the reconstruction results.</string>
+         </property>
+         <property name="text">
+          <string>Output
+filename</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="toolTip">
+          <string>Filename of the HDF5 that contains the Absorption images and the angles</string>
+         </property>
+         <property name="text">
+          <string>HDF5 file</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="dsetMaskTomo_comboBox">
+         <item>
+          <property name="text">
+           <string>None</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="toolTip">
+          <string>Dataset of the angles matching the absorption images.</string>
+         </property>
+         <property name="text">
+          <string>Dataset
+Angles</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="dsetAnglesTomoRot_comboBox"/>
+       </item>
+       <item row="7" column="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="outputNameTomoRot_lineEdit"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>_MagneticReconstruction.hdf5</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="dsetMaskTomoRot_comboBox">
+         <item>
+          <property name="text">
+           <string>None</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QComboBox" name="dsetAnglesTomo_comboBox"/>
+       </item>
+       <item row="7" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="outputNameTomo_lineEdit"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>_MagneticReconstruction.hdf5</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QLineEdit" name="fileMaskTomoRot_lineEdit"/>
+         </item>
+         <item>
+          <widget class="QToolButton" name="selectFileMaskTomoRot_toolButton">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="fileHDF5TomoRot_lineEdit"/>
+         </item>
+         <item>
+          <widget class="QToolButton" name="selectFileHDF5TomoRot_toolButton">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QLineEdit" name="fileMaskTomo_lineEdit"/>
+         </item>
+         <item>
+          <widget class="QToolButton" name="selectFileMaskTomo_toolButton">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLineEdit" name="fileHDF5Tomo_lineEdit"/>
+         </item>
+         <item>
+          <widget class="QToolButton" name="selectFileHDF5Tomo_toolButton">
+           <property name="toolTip">
+            <string>Select HDF5 for tomo</string>
+           </property>
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="dsetAbsorptionTomo_comboBox"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="dsetMaskReg_comboBox"/>
+       </item>
+       <item row="6" column="2">
+        <widget class="QComboBox" name="dsetMaskRegRot_comboBox"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>Dataset Mask
+(registration)</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QWidget" name="widget" native="true">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="horizontalSpacing">
+         <number>0</number>
+        </property>
+        <item row="1" column="0">
+         <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0,0,0">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetMaximumSize</enum>
+          </property>
+          <property name="horizontalSpacing">
+           <number>6</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>8</number>
+          </property>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_27">
+            <property name="text">
+             <string>Save Projection Matrices</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_26">
+            <property name="toolTip">
+             <string>Only mark if a Nvidia GPU is available with CUDA installed</string>
+            </property>
+            <property name="text">
+             <string>GPU</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_25">
+            <property name="toolTip">
+             <string>Number of simultaneous slices to reconstruct.
+This increases the performance of the reconstruction if there is enough memory available to speed-up the reconstruction.</string>
+            </property>
+            <property name="text">
+             <string>Simultaneous Slices</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_24">
+            <property name="toolTip">
+             <string>Indicate if the reconstruction is performed by rotating the X or the Y axis.
+The first means an stretching in the vertical direction,
+the second, in the horizontal.</string>
+            </property>
+            <property name="text">
+             <string>Reconstruction Axis</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Pixel size (nm)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QCheckBox" name="GPU_checkBox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QLineEdit" name="outputPathTomo_lineEdit"/>
+            </item>
+            <item>
+             <widget class="QToolButton" name="selectOutputPathTomo_toolButton">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="recAxis_comboBox">
+            <item>
+             <property name="text">
+              <string>YTilt</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>XTilt</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="pixelSize_doubleSpinBox">
+            <property name="minimum">
+             <double>0.000000000000000</double>
+            </property>
+            <property name="value">
+             <double>10.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_28">
+            <property name="toolTip">
+             <string>Only activate id there is stored the pre-computed reconstruction matrices.
+These should be stored inside the working directory in a folder called 'Projection_Matrices'.
+The name of each block of matrices should be 'Projection_x.mat' with x being the projection number.</string>
+            </property>
+            <property name="text">
+             <string>Use Projection Matrices</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="LCFlag_checkBox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>X</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="modSx_spinBox">
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_17">
+              <property name="text">
+               <string>Y</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="modSy_spinBox">
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>Z</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="modSz_spinBox">
+              <property name="maximum">
+               <number>100000</number>
+              </property>
+              <property name="value">
+               <number>200</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_22">
+            <property name="toolTip">
+             <string>Number of iterations for the reconstruction algorithm</string>
+            </property>
+            <property name="text">
+             <string>Number iterations</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Output
+path</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_15">
+            <property name="toolTip">
+             <string>Number of cells for the reconstruction in X, Y and Z.
+It can be as larga as the number of rows and columns in the input tomogram.
+If X or Y is 0, it takes the size of the absorption images. </string>
+            </property>
+            <property name="text">
+             <string>Number of
+cells</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QCheckBox" name="useProjMat_checkBox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QCheckBox" name="saveProjMat_checkBox">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSpinBox" name="nIter_spinBox">
+            <property name="value">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QSpinBox" name="simultSlcs_spinBox">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="toolTip">
+             <string>Indicate if it is a continuous film.</string>
+            </property>
+            <property name="text">
+             <string>Continuous film</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QPushButton" name="reconstruction_pushButton">
+            <property name="text">
+             <string>Reconstruction+Registration</string>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">execution_buttonGroup</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="registration_pushButton">
+            <property name="text">
+             <string>Only registration</string>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">execution_buttonGroup</string>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="visualization_pushButton">
+            <property name="text">
+             <string>Visualization</string>
+            </property>
+            <attribute name="buttonGroup">
+             <string notr="true">execution_buttonGroup</string>
+            </attribute>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="notes"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_11">
+     <property name="text">
+      <string>Copyright © 2024 ALBA-CELLS</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>fileHDF5Tomo_lineEdit</tabstop>
+  <tabstop>selectFileHDF5Tomo_toolButton</tabstop>
+  <tabstop>dsetAbsorptionTomo_comboBox</tabstop>
+  <tabstop>dsetAnglesTomo_comboBox</tabstop>
+  <tabstop>fileMaskTomo_lineEdit</tabstop>
+  <tabstop>selectFileMaskTomo_toolButton</tabstop>
+  <tabstop>dsetMaskTomo_comboBox</tabstop>
+  <tabstop>outputNameTomo_lineEdit</tabstop>
+  <tabstop>fileHDF5TomoRot_lineEdit</tabstop>
+  <tabstop>selectFileHDF5TomoRot_toolButton</tabstop>
+  <tabstop>dsetAbsorptionTomoRot_comboBox</tabstop>
+  <tabstop>dsetAnglesTomoRot_comboBox</tabstop>
+  <tabstop>fileMaskTomoRot_lineEdit</tabstop>
+  <tabstop>selectFileMaskTomoRot_toolButton</tabstop>
+  <tabstop>dsetMaskTomoRot_comboBox</tabstop>
+  <tabstop>outputNameTomoRot_lineEdit</tabstop>
+  <tabstop>outputPathTomo_lineEdit</tabstop>
+  <tabstop>selectOutputPathTomo_toolButton</tabstop>
+  <tabstop>modSz_spinBox</tabstop>
+  <tabstop>pixelSize_doubleSpinBox</tabstop>
+  <tabstop>nIter_spinBox</tabstop>
+  <tabstop>LCFlag_checkBox</tabstop>
+  <tabstop>recAxis_comboBox</tabstop>
+  <tabstop>simultSlcs_spinBox</tabstop>
+  <tabstop>GPU_checkBox</tabstop>
+  <tabstop>saveProjMat_checkBox</tabstop>
+  <tabstop>useProjMat_checkBox</tabstop>
+  <tabstop>reconstruction_pushButton</tabstop>
+  <tabstop>registration_pushButton</tabstop>
+  <tabstop>visualization_pushButton</tabstop>
+  <tabstop>notes</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="execution_buttonGroup"/>
+ </buttongroups>
+</ui>
