@@ -83,18 +83,18 @@ reconstructions:
 
 <details>
 <summary>Reconstruction output</summary>
-Each reconstruction produces a single HDF5 file.
+Each reconstruction produces a single final HDF5 file.
 
-(Single-tilt) Magnetic reconstruction of 2D samples:
+Magnetic reconstruction of 2D samples:
 ```
 /                               Group
-    /MagneticReconstruction     Group
-        /M1                     Dataset {Z, X, Y}
-        /M2                     Dataset {Z, X, Y}
+    /mx                         Dataset {X, Y}
+    /my                         Dataset {X, Y}
+    /mz                         Dataset {X, Y}
+    /r2m                        Dataset {X, Y}
 ```
 
-
-Absorption reconstruction of 3D samples:
+Absorption reconstruction of 3D samples (two files, one per tilt series):
 ```
 /                               Group
     /Absorption3D               Dataset {Z, X, Y}
@@ -105,7 +105,6 @@ Absorption reconstruction of 3D samples:
 Magnetic reconstruction of 3D samples:
 ```
 /                               Group
-    /Mask3D                     Dataset {Z, X, Y}
     /mx                         Dataset {Z, X, Y}
     /my                         Dataset {Z, X, Y}
     /mz                         Dataset {Z, X, Y}
