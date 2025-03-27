@@ -8,8 +8,10 @@ In this repo you may find:
 - [**Quick Launch Manual** to launch the app outside ALBA](./quick_launch_manual.md)
 - [**Source code**](./src)
 
-## Input data
+## Data
 
+<details>
+<summary>Preprocessing input</summary>
 To start from the pre-processing stage the data must consists of one Xradia (Zeiss microCT) XRM file per acquisition (polarization-angle-repetition) or one
 HDF5 file (`*.h5` or `*.hdf5`) with the following structure:
 
@@ -40,22 +42,75 @@ HDF5 file (`*.h5` or `*.hdf5`) with the following structure:
         /y_position             Dataset {SCALAR}
         /z_position             Dataset {SCALAR}
 ```
+</details>
 
-To start from the XMCD stage the data must consists of two HDF5 files (one per
-polarization) with the structure:
+<details>
+<summary>XMCD input (preprocessing output)</summary>
+Preprocessing generates one HDF5 file per polarization.
+Each files is structured as follows:
 
 ```
-/                           Group
-    /TomoNormalized         Group
-        /Currents           Dataset {N}
-        /ExpTimes           Dataset {N}
-        /TomoNormalized     Dataset {N, H, W}
-        /energy             Dataset {N}
-        /polarisation       Dataset {1}
-        /rotation_angle     Dataset {N}
-        /x_pixel_size       Dataset {1}
-        /y_pixel_size       Dataset {1}
+/                            Group
+    /TomoNormalized          Group
+        /Currents            Dataset {N}
+        /ExpTimes            Dataset {N}
+        /TomoNormalized      Dataset {N, H, W}
+        /energy              Dataset {N}
+        /polarisation        Dataset {1}
+        /rotation_angle      Dataset {N}
+        /x_pixel_size        Dataset {1}
+        /y_pixel_size        Dataset {1}
 ```
+</details>
+
+<details>
+<summary>Reconstruction input (XMCD output)</summary>
+A single HDF5 file is produced by the XMCD stage and used for the different 
+reconstructions:
+
+```
+/                               Group
+    /2DAlignedNegativeStack     Dataset {N, H, W}
+    /2DAlignedPositiveStack     Dataset {N, H, W}
+    /Absorption2DAligned        Dataset {N, H, W}
+    /Angles                     Dataset {N}
+    /MagneticSignal2DAligned    Dataset {N, H, W}
+    /OriginalNegativeStack      Dataset {N, H, W}
+    /OriginalPositiveStack      Dataset {N, H, W}
+
+```
+</details>
+
+<details>
+<summary>Reconstruction output</summary>
+Each reconstruction produces a single HDF5 file.
+
+(Single-tilt) Magnetic reconstruction of 2D samples:
+```
+/                               Group
+    /MagneticReconstruction     Group
+        /M1                     Dataset {Z, X, Y}
+        /M2                     Dataset {Z, X, Y}
+```
+
+
+Absorption reconstruction of 3D samples:
+```
+/                               Group
+    /Absorption3D               Dataset {Z, X, Y}
+    /Mask3D                     Dataset {Z, X, Y}
+    /Mask3DRegistration         Dataset {Z, X, Y}
+```
+
+Magnetic reconstruction of 3D samples:
+```
+/                               Group
+    /Mask3D                     Dataset {Z, X, Y}
+    /mx                         Dataset {Z, X, Y}
+    /my                         Dataset {Z, X, Y}
+    /mz                         Dataset {Z, X, Y}
+```
+</details>
 
 ## Do you have suggestions or have you found a bug?
 If you have a suggestion of a feature that you would like to see included in the
