@@ -1,0 +1,12 @@
+name: martapp
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - setuptools
+  - mamba
+  - sharedarray
+  - napari
+  - pyqt
+  - opencv

@@ -1,8 +1,13 @@
 # About MARTApp's code
 
+In order to make this software open source and accessible for inspection, improvement, or modification, 
+the application source code is available here. However, if you are not a developer, we recommend using the Docker image.
+
 MARTApp is based on two python packages: `sdm-mistral`, which is the core and 
 has the different used pipelines; and `martapp`, which only manages the application's front-end.
 
-Currently, `sdm-mistral` is under re-implementation (the pipelines themself will remain the same), and the version here is just a fraction of the whole package. We are working on the publication of the full code and the published code here should only be used for illustrative purposes.
+To use this code, please, create the required conda environment with the `environment.yml` file and install [artis-tomo](https://github.com/ALBA-Synchrotron-Methodology/artis_tomo), [sdm-mistral](./sdm-mistral/), and [martapp](./martapp/) packages. Then, simply call `martapp` in the command line.
 
-Please, do not hesitate to contact us if you need a fully working version of the code for further development.
+To have full access to the application you will need to have [IMOD](https://bio3d.colorado.edu/imod/) (for some alignment algorithms) and [MATLAB Runtime 2017](https://es.mathworks.com/products/compiler/matlab-runtime.html) (for some reconstruction algorithms) installed. We include MATLAB code compiled and non-compiled.
+
+Please, do not hesitate to contact us if you need help with the installation or if you find a bug.
