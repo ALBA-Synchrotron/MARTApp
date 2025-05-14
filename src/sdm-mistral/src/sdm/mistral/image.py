@@ -31,7 +31,7 @@ from pystackreg import StackReg
 from scipy.ndimage import shift
 from skimage import transform
 from skimage.registration import phase_cross_correlation
-from xpytools.programs.tiltalign import tilt_align
+from artis_tomo.programs.tiltalign import tilt_align
 
 
 class Image(object):

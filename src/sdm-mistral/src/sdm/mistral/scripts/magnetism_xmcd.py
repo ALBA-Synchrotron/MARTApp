@@ -38,8 +38,8 @@ from matplotlib.widgets import Slider
 from PyQt5.QtWidgets import QInputDialog, QMessageBox
 from pystackreg import StackReg
 from skimage.registration import phase_cross_correlation
-from xpytools.image.filter import maskRaisedCosineRadial
-from xpytools.programs.tiltalign import tilt_align
+from artis_tomo.image.filter import maskRaisedCosineRadial
+from artis_tomo.programs.tiltalign import tilt_align
 
 from sdm.mistral.image import align, mv_projection, mv_projection_subpixel
 from sdm.mistral.scripts.parser import base_parser
