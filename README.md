@@ -124,7 +124,7 @@ the Issues tab or to write an email to *jgsanchez (at) cells.es*.
 Please, if you use this application for the analysis/reconstruction of your data, remember to cite the paper that accompanies the software:
 
 ```
-Herguedas-Alonso, A. E., Sánchez, J. G., Fernández-González, C.,
+Herguedas-Alonso, A. E., Gómez Sánchez, J., Fernández-González, C.,
 Sorrentino, A., Ferrer, S., Pereiro, E., & Hierro-Rodriguez, A. (2025).
 MARTApp: software for the processing and reconstruction of synchrotron radiation-based magnetic tomographies.
 arXiv preprint arXiv:2501.13127.
