@@ -124,7 +124,9 @@ the Issues tab or to write an email to *jgsanchez (at) cells.es*.
 Please, if you use this application for the analysis/reconstruction of your data, remember to cite the paper that accompanies the software:
 
 ```
-Herguedas-Alonso, A.E., Gómez Sánchez, J., Fernández-González, C., Sorrentino, A., Ferrer, S., Pereiro, E. & Hierro-Rodriguez, A. (2025). J. Synchrotron Rad. 32, https://doi.org/10.1107/S1600577525004485.
+Herguedas-Alonso, A.E., Gómez Sánchez, J., Fernández-González, C., Sorrentino, A.,
+Ferrer, S., Pereiro, E. & Hierro-Rodriguez, A. (2025). J. Synchrotron Rad.
+32, https://doi.org/10.1107/S1600577525004485.
 ```
 
 and the paper of the algorithm used for the reconstruction:
