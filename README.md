@@ -1,8 +1,8 @@
 # MARTApp
 
-**MARTApp (Magnetic Analysis & Reconstruction of Tomographies App)** is a cross-platform application delevoped in BL09 MISTRAL for the analysis and vectorial reconstruction of magnetic tomographies adquired at the beamline (but not limited to it). 
+**MARTApp (Magnetic Analysis & Reconstruction of Tomographies App)** is a cross-platform application developed in BL09 MISTRAL for the analysis and vectorial reconstruction of magnetic tomographies acquired at the beamline (but not limited to it). 
 
-In this repo you may find:
+In this repo, you may find:
 
 - [**User guide** to use MARTApp in/outside ALBA](./user_guide.pdf)
 - [**Quick Launch Manual** to launch the app outside ALBA](./quick_launch_manual.md)
@@ -12,7 +12,7 @@ In this repo you may find:
 
 <details>
 <summary>Preprocessing input</summary>
-To start from the pre-processing stage the data must consists of one Xradia (Zeiss microCT) XRM file per acquisition (polarization-angle-repetition) or one
+To start from the pre-processing stage, the data must consist of one Xradia (Zeiss microCT) XRM file per acquisition (polarization-angle-repetition) or one
 HDF5 file (`*.h5` or `*.hdf5`) with the following structure:
 
 ```
@@ -47,7 +47,7 @@ HDF5 file (`*.h5` or `*.hdf5`) with the following structure:
 <details>
 <summary>XMCD input (preprocessing output)</summary>
 Preprocessing generates one HDF5 file per polarization.
-Each files is structured as follows:
+Each file is structured as follows:
 
 ```
 /                            Group
@@ -112,7 +112,7 @@ Magnetic reconstruction of 3D samples:
 </details>
 
 ## Do you have suggestions or have you found a bug?
-If you have a suggestion of a feature that you would like to see included in the
+If you have a suggestion for a feature that you would like to see included in the
 application or something that could be improved, as well as in the case that you
 found a bug, do not hesitate to open an issue using 
 the Issues tab or to write an email to *jgsanchez (at) cells.es*.
@@ -124,13 +124,10 @@ the Issues tab or to write an email to *jgsanchez (at) cells.es*.
 Please, if you use this application for the analysis/reconstruction of your data, remember to cite the paper that accompanies the software:
 
 ```
-Herguedas-Alonso, A. E., Gómez Sánchez, J., Fernández-González, C.,
-Sorrentino, A., Ferrer, S., Pereiro, E., & Hierro-Rodriguez, A. (2025).
-MARTApp: software for the processing and reconstruction of synchrotron radiation-based magnetic tomographies.
-arXiv preprint arXiv:2501.13127.
+Herguedas-Alonso, A.E., Gómez Sánchez, J., Fernández-González, C., Sorrentino, A., Ferrer, S., Pereiro, E. & Hierro-Rodriguez, A. (2025). J. Synchrotron Rad. 32, https://doi.org/10.1107/S1600577525004485.
 ```
 
-and the paper of the used algorithm for the reconstruction:
+and the paper of the algorithm used for the reconstruction:
 
 ```
 Herguedas-Alonso, A. E., Aballe, L., Fullerton, J., Vélez, M.,
