@@ -5,7 +5,7 @@
 - X11-based, which provides basic X11 forwarding, allowing the user to natively use the application on their system.
 - noVNC-based, which allows the user to use the application in their browser.
 
-For both, Docker is required. It can be downloaded from [here](https://www.docker.com/products/docker-desktop/). Once installed, we can proceed pulling MARTApp using your
+For both, Docker is required. It can be downloaded from [here](https://www.docker.com/products/docker-desktop/). Once installed, open the application to verify that it works, and then we can proceed pulling MARTApp using your
 system command line (distributed through [GitHub registry](https://github.com/orgs/ALBA-Synchrotron/packages/container/package/martapp)):
 
 ```bash
