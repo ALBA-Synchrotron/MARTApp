@@ -44,7 +44,7 @@ docker run -e DISPLAY=$DISPLAY \
 <details>
 <summary>Windows</summary>
 
-Firstly, we need to install **XLaunch**, to do so we need to install **VcXsrv Windows X Server** that can be downloaded from [here](https://sourceforge.net/projects/vcxsrv/) (using default settings/installation). Then, open and set up **XLaunch**:
+Firstly, we need to install **XLaunch**. To do it, we need to install **VcXsrv Windows X Server**, which can be downloaded from [here](https://sourceforge.net/projects/vcxsrv/) (using default settings/installation). Then, open and set up **XLaunch**:
 
 1. Select "Multiple windows".
 2. Choose "Start no client".
@@ -52,7 +52,7 @@ Firstly, we need to install **XLaunch**, to do so we need to install **VcXsrv Wi
 4. Check "Native OpenGL".
 5. Finish and keep it running.
 
-Then, we need to know the IP of our computer. We can use ipconfig:
+Then, we need to know the IP of our computer. We can use `ipconfig`:
 ```bash
 >> ipconfig
 ...
