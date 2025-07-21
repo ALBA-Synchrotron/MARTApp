@@ -32,11 +32,13 @@ Finally, start the container:
 docker run -e DISPLAY=$DISPLAY \
            -v "/tmp/.X11-unix/:/tmp/.X11-unix/" \
            -v "SOURCE:DESTINATION" \
+           --gpus all \
            ghcr.io/alba-synchrotron/martapp:latest
 ```
 - `-e DISPLAY=$DISPLAY` allows us to access the display for the GUI.
 - `-v "/tmp/.X11-unix/:/tmp/.X11-unix/"` allows us to forward X11.
-- `-v "SOURCE:DESTINATION"` allows us to access SOURCE path (on our machine) as the path indicated in DESTINATION.
+- `-v "SOURCE:DESTINATION"` allows us to access SOURCE path (on our machine) as the path indicated in DESTINATION. For example, `-v "/homelocal/user/data/:/data"` will map `/homelocal/user/data/` to `/data` in the application interface.
+- `--gpus all` enables the application to utilize the GPU during reconstruction, thereby improving performance. More information [here](https://docs.docker.com/engine/containers/resource_constraints/#gpu).
 </details>
 
 <details>
@@ -64,24 +66,26 @@ Finally, we can launch the application:
 docker run -e DISPLAY=COMPUTER_IP \
            -v "/tmp/.X11-unix/:/tmp/.X11-unix/" \
            -v "SOURCE:DESTINATION" \
+           --gpus all \
            ghcr.io/alba-synchrotron/martapp:latest
 ```
 
-- `-e DISPLAY=COMPUTER_IP` allows us to access the display for the GUI. `COMPUTER_IP` must be our IP address, retrieved using' ipconfig'. For some cases, instead of using the IP, we can set `DISPLAY=host.docker.internal:0.0`.
+- `-e DISPLAY=COMPUTER_IP` allows us to access the display for the GUI. `COMPUTER_IP` must be our IP address, retrieved using `ipconfig`. For some cases, instead of using the IP, we can set `DISPLAY=host.docker.internal:0.0`.
 - `-v "/tmp/.X11-unix/:/tmp/.X11-unix/"` allows us to forward X11.
-- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`.
+- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`. For example, `-v "C:\user\data\:/data"` will map `C:\user\data\` to `/data` in the application interface.
+- `--gpus all` enables the application to utilize the GPU during reconstruction, thereby improving performance. More information [here](https://docs.docker.com/engine/containers/resource_constraints/#gpu).
 
 </details>
 
 <details>
 <summary>macOS</summary>
 
-First, we need to install **XQuartz**, which can be downloaded from here or using the command line:
+First, we need to install **XQuartz**, which can be downloaded from [here](https://www.xquartz.org/) or using the command line:
 ```bash
 brew install --cask xquartz
 ```
 
-After restarting MacOS we should do the following using the command line:
+After restarting MacOS, we should do the following using the command line:
 ```bash
 # Open XQuartz
 open -a XQuartz
@@ -101,7 +105,9 @@ docker run -e DISPLAY=host.docker.internal:0 \
 ```
 - `-e DISPLAY=host.docker.internal:0` allows us to access the display for the GUI.
 - `-v "/tmp/.X11-unix:/tmp/.X11-unix"` allows us to forward X11.
-- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`.
+- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`. For example, `-v "/homelocal/user/data/:/data"` will map `/homelocal/user/data/` to `/data` in the application interface.
+
+Unfortunately, Docker does not allow for using GPUs other than NVIDIA ones, and then macOS machines cannot use GPU support. This may worsen the computing time required for reconstructions, but not their quality.
 
 </details>
 
@@ -116,12 +122,14 @@ We only need to launch the application:
 ```bash
 docker run -p 5900:5900 -p 6080:6080 \
            -v "SOURCE:DESTINATION" \
+           --gpus all \
            ghcr.io/alba-synchrotron/martapp:latest_novnc
-
-# The application will be automatically opened in your browser. If not, enter in http://localhost:6080/ .
 ```
 - `-p 5900:5900 -p 6080:6080` allows port mapping between the Docker container and the system.
-- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`.
+- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`. For example, `-v "/homelocal/user/data/:/data"` will map `/homelocal/user/data/` to `/data` in the application interface.
+- `--gpus all` enables the application to utilize the GPU during reconstruction, thereby improving performance. More information [here](https://docs.docker.com/engine/containers/resource_constraints/#gpu).
+
+The application will be automatically opened in your browser. If not, enter in http://localhost:6080/.
 
 If the ports are already in use by other applications, change them (e.g, increasing by 1 the numbers), and if they are used by Docker (e.g., because the application has been incorrectly closed), the following can be done:
 ```bash
