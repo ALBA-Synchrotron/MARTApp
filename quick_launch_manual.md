@@ -126,7 +126,7 @@ docker run -p 5900:5900 -p 6080:6080 \
            ghcr.io/alba-synchrotron/martapp:latest_novnc
 ```
 - `-p 5900:5900 -p 6080:6080` allows port mapping between the Docker container and the system.
-- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`. For example, `-v "/homelocal/user/data/:/data"` will map `/homelocal/user/data/` to `/data` in the application interface.
+- `-v "SOURCE:DESTINATION"` allows us to access `SOURCE` path (on our machine) as the path indicated in `DESTINATION`. For example, `-v "/homelocal/user/data/:/data"` will map `/homelocal/user/data/` to `/data` in the application interface when using Linux. In Windows, `-v "C:\user\data\:/data"` will map `C:\user\data\` to `/data` in the application interface.
 - `--gpus all` enables the application to utilize the GPU during reconstruction, thereby improving performance. More information [here](https://docs.docker.com/engine/containers/resource_constraints/#gpu).
 
 The application will be automatically opened in your browser. If not, enter in http://localhost:6080/.
